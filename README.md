@@ -2,6 +2,8 @@
 
 Type a city name and see its current temperature, humidity and wind speed. The data comes live from a free weather API, so it is always up to date.
 
+Live site: https://ordinaryphantom-lgtm.github.io/weather-app/
+
 ![Weather App screenshot](WeatherScreen.png)
 
 ## Features
