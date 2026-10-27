@@ -1,198 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600&display=swap");
+
 * { box-sizing: border-box; }
 
-:root {
-  --hero: url("https://unsplash.com/photos/Iujaige0Ks0/download?force=true&w=1600");
-  --ink: #0f172a;
-  --muted: #64748b;
-  --primary: #4f46e5;
-  --line: #e2e8f0;
-}
-
-/* ---------- No scrolling: page is exactly one screen tall ---------- */
-html, body {
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
-}
-
+/* Full-page cloudy sky photo with a cool blue-grey tint */
 body {
-  height: 100vh;
-  height: 100dvh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  font-family: "Segoe UI", system-ui, Arial, sans-serif;
-  color: var(--ink);
-  background: #fff;
-}
-
-/* Left half: Unsplash photo */
-body::before {
-  content: "Know the sky\A before you step out.";
-  white-space: pre;
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
-  align-items: flex-end;
-  height: 100%;
-  padding: 48px;
-  font-size: clamp(28px, 3vw, 44px);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -1px;
-  color: #fff;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  background:
-    linear-gradient(to top, rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0) 55%),
-    var(--hero) center / cover no-repeat,
-    linear-gradient(135deg, #1e3a8a, #38bdf8);
-}
-
-/* Right half: app (fits the screen, content centered) */
-.app {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  padding: 24px 40px;
-  text-align: left;
-  background: #fff;
+  align-items: center;
+  padding: 32px 24px;
+  font-family: "Outfit", "Segoe UI", system-ui, Arial, sans-serif;
+  color: #fff;
+  background:
+    linear-gradient(180deg, rgba(8, 20, 40, 0.45), rgba(6, 12, 24, 0.8)),
+    url("https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=2000&q=80")
+    center / cover no-repeat fixed;
+  background-color: #14213a; /* fallback if the image doesn't load */
 }
 
-.app > * {
+/* Open, centered layout: no container */
+.app {
   width: 100%;
-  max-width: 420px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 640px;
+  text-align: center;
 }
 
 h1 {
-  margin-top: 0;
-  margin-bottom: 18px;
-  font-size: clamp(24px, 3.2vh, 32px);
-  font-weight: 800;
-  letter-spacing: -0.8px;
+  margin: 0 0 24px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-/* ---------- Search ---------- */
-form { display: flex; gap: 10px; }
+/* ---------- Search bar (one frosted pill) ---------- */
+form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
 
 input {
   flex: 1;
   min-width: 0;
-  padding: 13px 16px;
-  font-size: 16px;
+  padding: 12px 20px;
   font-family: inherit;
-  color: var(--ink);
-  background: #f8fafc;
-  border: 1.5px solid var(--line);
-  border-radius: 12px;
-  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  font-size: 17px;
+  font-weight: 300;
+  color: #fff;
+  background: transparent;
+  border: none;
 }
-input::placeholder { color: #94a3b8; }
-input:focus {
-  outline: none;
-  background: #fff;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
-}
+
+input::placeholder { color: rgba(255, 255, 255, 0.55); }
+input:focus { outline: none; }
+
+form:focus-within { border-color: rgba(255, 255, 255, 0.85); }
 
 button {
-  padding: 13px 22px;
-  border: none;
-  border-radius: 12px;
+  padding: 12px 28px;
+  font-family: inherit;
   font-size: 16px;
   font-weight: 600;
-  font-family: inherit;
-  color: #fff;
+  color: #082030;
+  background: #7dd3fc;
+  border: none;
+  border-radius: 999px;
   cursor: pointer;
-  background: var(--primary);
-  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.3);
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  transition: background 0.2s;
 }
-button:hover {
-  background: #4338ca;
-  transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(79, 70, 229, 0.4);
-}
-button:active { transform: scale(0.96); }
-button:focus-visible { outline: 3px solid rgba(79, 70, 229, 0.4); outline-offset: 2px; }
+
+button:hover { background: #bae6fd; }
+button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
 #message {
-  min-height: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  min-height: 22px;
+  margin: 12px 0 0;
   font-size: 14px;
   font-weight: 600;
-  color: #dc2626;
+  color: #fca5a5;
 }
 
-/* ---------- Weather card ---------- */
-.card {
-  padding: 22px 20px;
-  text-align: center;
-  color: #fff;
-  border-radius: 22px;
-  background: linear-gradient(135deg, #0ea5e9, #4f46e5);
-  box-shadow: 0 18px 36px rgba(79, 70, 229, 0.3);
-}
+/* ---------- Weather ---------- */
+.card { margin-top: 28px; }
 
 .card h2 {
   margin: 0;
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
 }
 
 .temp {
-  margin: 8px 0 14px;
-  font-size: clamp(54px, 9vh, 80px);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -3px;
+  margin: 0 0 36px;
+  font-size: clamp(96px, 20vh, 168px);
+  font-weight: 200;
+  line-height: 1.05;
+  letter-spacing: -4px;
 }
 
-.card p:not(.temp) {
-  margin: 8px 0 0;
-  padding: 10px 14px;
-  font-size: 15px;
-  font-weight: 500;
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 12px;
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
-/* ---------- How-to-use box (added by CSS, no HTML change needed) ---------- */
-.app::after {
-  content: "💡 How to use\A 1. Type a city name, for example Delhi.\A 2. Click Search, or press Enter.\A 3. See the temperature, humidity and wind.\A If red text appears, check the city spelling.";
-  white-space: pre-line;
-  margin-top: 16px;
-  padding: 14px 16px;
-  font-size: 13.5px;
-  line-height: 1.55;
-  color: var(--muted);
-  background: #f8fafc;
-  border: 1px dashed #cbd5e1;
-  border-radius: 14px;
+.stat {
+  padding: 22px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-/* ---------- Short screens: hide the tips so nothing needs scrolling ---------- */
-@media (max-height: 700px) {
-  .app::after { display: none; }
-  .temp { font-size: 52px; }
+.label {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
 }
 
-/* ---------- Phones: photo on top (short), app below, still no scrolling ---------- */
-@media (max-width: 800px) {
-  body {
-    grid-template-columns: 1fr;
-    grid-template-rows: 22% 1fr;
-  }
-  body::before {
-    padding: 20px;
-    font-size: 22px;
-  }
-  .app { padding: 16px 20px; }
-  h1 { margin-bottom: 12px; }
+.value {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 400;
 }
 
-@media (max-width: 800px) and (max-height: 760px) {
-  .app::after { display: none; }
+.hint {
+  margin: 28px 0 0;
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 480px) {
+  .temp { letter-spacing: -2px; }
+  .value { font-size: 24px; }
+  button { padding: 12px 20px; }
+}
+
+@media (max-height: 640px) {
+  .hint { display: none; }
+  .temp { margin-bottom: 20px; }
 }

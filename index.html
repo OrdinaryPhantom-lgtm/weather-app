@@ -20,9 +20,20 @@
     <div class="card">
       <h2 id="city-name">--</h2>
       <p class="temp"><span id="temp">--</span>°C</p>
-      <p>Humidity: <span id="humidity">--</span>%</p>
-      <p>Wind: <span id="wind">--</span> km/h</p>
+
+      <div class="stats">
+        <div class="stat">
+          <p class="label">Humidity</p>
+          <p class="value"><span id="humidity">--</span>%</p>
+        </div>
+        <div class="stat">
+          <p class="label">Wind</p>
+          <p class="value"><span id="wind">--</span> km/h</p>
+        </div>
+      </div>
     </div>
+
+    <p class="hint">Type a city name and press Enter. If red text appears, check the spelling.</p>
   </div>
   <script src="script.js"></script>
 </body>
