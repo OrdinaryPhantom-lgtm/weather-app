@@ -1,0 +1,198 @@
+* { box-sizing: border-box; }
+
+:root {
+  --hero: url("https://unsplash.com/photos/Iujaige0Ks0/download?force=true&w=1600");
+  --ink: #0f172a;
+  --muted: #64748b;
+  --primary: #4f46e5;
+  --line: #e2e8f0;
+}
+
+/* ---------- No scrolling: page is exactly one screen tall ---------- */
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  height: 100vh;
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: "Segoe UI", system-ui, Arial, sans-serif;
+  color: var(--ink);
+  background: #fff;
+}
+
+/* Left half: Unsplash photo */
+body::before {
+  content: "Know the sky\A before you step out.";
+  white-space: pre;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  padding: 48px;
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  color: #fff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  background:
+    linear-gradient(to top, rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0) 55%),
+    var(--hero) center / cover no-repeat,
+    linear-gradient(135deg, #1e3a8a, #38bdf8);
+}
+
+/* Right half: app (fits the screen, content centered) */
+.app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 40px;
+  text-align: left;
+  background: #fff;
+}
+
+.app > * {
+  width: 100%;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: clamp(24px, 3.2vh, 32px);
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+/* ---------- Search ---------- */
+form { display: flex; gap: 10px; }
+
+input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 16px;
+  font-size: 16px;
+  font-family: inherit;
+  color: var(--ink);
+  background: #f8fafc;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+input::placeholder { color: #94a3b8; }
+input:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+}
+
+button {
+  padding: 13px 22px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  color: #fff;
+  cursor: pointer;
+  background: var(--primary);
+  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.3);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+button:hover {
+  background: #4338ca;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(79, 70, 229, 0.4);
+}
+button:active { transform: scale(0.96); }
+button:focus-visible { outline: 3px solid rgba(79, 70, 229, 0.4); outline-offset: 2px; }
+
+#message {
+  min-height: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #dc2626;
+}
+
+/* ---------- Weather card ---------- */
+.card {
+  padding: 22px 20px;
+  text-align: center;
+  color: #fff;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #0ea5e9, #4f46e5);
+  box-shadow: 0 18px 36px rgba(79, 70, 229, 0.3);
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.temp {
+  margin: 8px 0 14px;
+  font-size: clamp(54px, 9vh, 80px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+.card p:not(.temp) {
+  margin: 8px 0 0;
+  padding: 10px 14px;
+  font-size: 15px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+}
+
+/* ---------- How-to-use box (added by CSS, no HTML change needed) ---------- */
+.app::after {
+  content: "💡 How to use\A 1. Type a city name, for example Delhi.\A 2. Click Search, or press Enter.\A 3. See the temperature, humidity and wind.\A If red text appears, check the city spelling.";
+  white-space: pre-line;
+  margin-top: 16px;
+  padding: 14px 16px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--muted);
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 14px;
+}
+
+/* ---------- Short screens: hide the tips so nothing needs scrolling ---------- */
+@media (max-height: 700px) {
+  .app::after { display: none; }
+  .temp { font-size: 52px; }
+}
+
+/* ---------- Phones: photo on top (short), app below, still no scrolling ---------- */
+@media (max-width: 800px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: 22% 1fr;
+  }
+  body::before {
+    padding: 20px;
+    font-size: 22px;
+  }
+  .app { padding: 16px 20px; }
+  h1 { margin-bottom: 12px; }
+}
+
+@media (max-width: 800px) and (max-height: 760px) {
+  .app::after { display: none; }
+}
