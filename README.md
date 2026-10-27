@@ -2,7 +2,7 @@
 
 Type a city name and see its current temperature, humidity and wind speed. The data comes live from a free weather API, so it is always up to date.
 
-![Weather App screenshot](Weather-App.png)
+![Weather App screenshot](WeatherApp.png)
 
 ## Features
 
