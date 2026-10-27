@@ -42,4 +42,4 @@ Weather data by [Open-Meteo.com](https://open-meteo.com/).
 
 ## Author
 
-[Your Name](https://github.com/YOUR-USERNAME)
+[404Architect](https://github.com/OrdinaryPhantom-lgtm)
